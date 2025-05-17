@@ -7,6 +7,7 @@ import Home from "./pages/home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import FindStoragePage from "./pages/FindStoragePage";
+import AboutUsPage from "./pages/AboutUsPage";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -19,6 +20,8 @@ const TicketSalesPage: React.FC = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element=  {<TermsOfService />} />
             <Route path="/find-storage" element={<FindStoragePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+
 
           </Routes>
         </main>
