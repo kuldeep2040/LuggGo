@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-
+import "tailwindcss";
 const TicketSalesPage: React.FC = () => {
   return (
     <div className="bg-white text-gray-900 font-sans">

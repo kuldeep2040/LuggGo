@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-
 const Navbar: FC = () => {
   return (
     <header className="flex justify-between items-center py-6 px-10 shadow-md">
