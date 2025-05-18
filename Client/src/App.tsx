@@ -9,6 +9,8 @@ import TermsOfService from "./pages/TermsOfService";
 import FindStoragePage from "./pages/FindStoragePage";
 import AboutUsPage from "./pages/AboutUsPage";
 import HeroSection from "./components/HeroSection";
+import AvailableStorageUnits from "./pages/AvailableStorageUnits";
+import LuggageStorageDetail from "./pages/LuggageStorageDetails";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -24,6 +26,8 @@ const TicketSalesPage: React.FC = () => {
             <Route path="/terms-of-service" element=  {<TermsOfService />} />
             <Route path="/find-storage" element={<FindStoragePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/units" element={<AvailableStorageUnits />} />
+            <Route path="/book" element={<LuggageStorageDetail />} />
  
  
           </Routes>

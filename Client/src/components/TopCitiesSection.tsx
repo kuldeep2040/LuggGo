@@ -88,11 +88,12 @@ export default function TopCitiesSection() {
                     <p className="text-[#757493] mt-1">From ₹99/day</p>
                   </div>
                   
+                  <a href="/units">
                   <button className="flex items-center justify-center w-10 h-10 bg-[#edf0fd] rounded-full text-[#1536ec] hover:bg-[#1536ec] hover:text-white transition-colors duration-300">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14m-7-7l7 7-7 7" />
                     </svg>
-                  </button>
+                  </button></a>
                 </div>
                 
                 {/* Features */}
