@@ -25,10 +25,9 @@ const Footer: React.FC = () => {
                     <div className="md:col-span-2">
                         <h3 className="text-xl font-semibold mb-4">Explore</h3>
                         <ul className="space-y-2 text-gray-300">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Book a Locker</a></li>
+                            <li><Link to="/">Home</Link></li>
                             <li><a href="#">How It Works</a></li>
-                            <li><a href="#">Find Nearby Storage</a></li>
+                            <li><Link to="/find-storage">Find Nearby Storage</Link></li>
                         </ul>
                     </div>
 
