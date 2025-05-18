@@ -6,6 +6,7 @@ import Footer from "./components/Footer"; // Your footer component
 import Home from "./pages/home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import HeroSection from "./components/HeroSection";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -14,7 +15,9 @@ const TicketSalesPage: React.FC = () => {
 
         <main className="flex-grow">
           <Routes>
+
             <Route path="/" element={<Home />} />
+            <Route path="/hero" element={<HeroSection />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>

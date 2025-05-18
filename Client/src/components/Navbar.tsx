@@ -2,7 +2,7 @@ import type { FC } from 'react'
 const Navbar: FC = () => {
   return (
     <header className="flex justify-between items-center py-6 px-10 shadow-md">
-      <div className="text-xl font-bold text-blue-600">TicketsCandy</div>
+      <div className="text-xl font-bold text-blue-600">LugGo</div>
       <nav className="space-x-6 text-sm font-medium">
         <a href="#">Home</a>
         <a href="#">How it Works</a>
