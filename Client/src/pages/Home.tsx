@@ -3,6 +3,8 @@ import React from 'react';
 import FeaturesGrid from '../components/Features'; // adjust path as needed
 import Testimonials from '../components/Testimonials';
 import HeroSection from '../components/HeroSection';
+import WhyChooseUs from '../components/WhyChooseUs';
+import TopCitiesSection from '../components/TopCitiesSection';
 
 const Home: React.FC = () => {
   return (
@@ -10,7 +12,10 @@ const Home: React.FC = () => {
       {/* You can add a Hero, Navbar, etc. here */}
       <HeroSection/>
       <FeaturesGrid />
+      <TopCitiesSection/>
+      <WhyChooseUs/>
       <Testimonials/>
+  
     </div>
   );
 };
