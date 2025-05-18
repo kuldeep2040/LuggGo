@@ -11,6 +11,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import HeroSection from "./components/HeroSection";
 import AvailableStorageUnits from "./pages/AvailableStorageUnits";
 import LuggageStorageDetail from "./pages/LuggageStorageDetails";
+import ContactUs from "./pages/ContactUsPage";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -28,6 +29,8 @@ const TicketSalesPage: React.FC = () => {
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/units" element={<AvailableStorageUnits />} />
             <Route path="/book" element={<LuggageStorageDetail />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+
  
  
           </Routes>

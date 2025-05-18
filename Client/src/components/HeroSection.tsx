@@ -70,7 +70,8 @@ export default function HeroSection() {
               <span className="w-8 h-8 bg-[#edf0fd] flex items-center justify-center rounded-full">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none"><circle cx="9.5" cy="9.5" r="9" stroke="#1536ec"/><path d="M8 6l4 3.5L8 13" fill="#1536ec"/></svg>
               </span>
-              How it Works
+              <a href="https://www.youtube.com/watch?v=GqbyiINoQ9c">How it Works</a>
+              
             </button>
           </div>
 
