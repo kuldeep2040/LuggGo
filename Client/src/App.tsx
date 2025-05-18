@@ -12,7 +12,8 @@ import HeroSection from "./components/HeroSection";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
-      <div className="bg-white text-gray-900 font-sans min-h-screen flex flex-col">
+      <div className="bg-[#f4f8fc]   text-gray-900 font-sans min-h-screen flex flex-col">
+       
         <Navbar />
  
         <main className="flex-grow">

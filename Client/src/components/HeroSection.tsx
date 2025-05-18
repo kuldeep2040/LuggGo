@@ -1,13 +1,42 @@
-import React from 'react';
-
-// Luggage Locker photo for hero
-const lockerImg = "https://luggage-storage.nyc/wp-content/uploads/2022/07/shane-LLAz0_wudTo-unsplash-1024x683.jpg";
+import React, { useEffect, useState } from 'react';
+// import '../../public/li.png'
+// Luggage Locker photo for hero;
+// const lockerImg = "https://luggage-storage.nyc/wp-content/uploads/2022/07/shane-LLAz0_wudTo-unsplash-1024x683.jpg";
 const avatarImg = "https://randomuser.me/api/portraits/men/22.jpg"; // For sample user
+
+// Counter animation hook
+function useCountUp(to: number, duration = 4000, formatFn?: (n: number) => string) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let frame: number;
+    let t0: number;
+    const step = (timestamp: number) => {
+      if (!t0) t0 = timestamp;
+      const progress = Math.min((timestamp - t0) / duration, 1);
+      const value = Math.round(progress * to);
+      setCount(value);
+      if (progress < 1) {
+        frame = requestAnimationFrame(step);
+      } else {
+        setCount(to);
+      }
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [to, duration]);
+  return formatFn ? formatFn(count) : count;
+}
+
+function Counter({ to, duration = 900, format, className = '' }: { to: number; duration?: number; format?: (n: number) => string; className?: string }) {
+  const val = useCountUp(to, duration, format);
+  return <span className={className}>{val}</span>;
+}
 
 export default function HeroSection() {
   return (
-    <section className="relative bg-[#f4f8fc] min-h-[790px] flex items-center overflow-x-clip pb-5">
+    <section className="relative bg-[#f4f8fc] min-h-[90vh] flex items-center overflow-x-clip pb-5">
       {/* Decorative Shapes - hidden on mobile for clarity */}
+      
       <span className="hidden sm:block absolute left-[6vw] top-[88px] w-3.5 h-3.5 bg-[#f6a623] rounded-full"/>
       <span className="hidden sm:block absolute left-[12vw] top-[350px] w-3 h-3 bg-[#1338fc] rounded-full"/>
       <span className="hidden md:block absolute left-[25vw] bottom-[140px] w-9 h-9 border-2 border-dashed border-[#a884ff] rounded-full opacity-50"/>
@@ -16,7 +45,7 @@ export default function HeroSection() {
       <span className="hidden sm:block absolute right-[11vw] top-[229px] w-2.5 h-2.5 bg-[#27d06f] rounded-full"/>
       <span className="hidden sm:block absolute right-[7vw] bottom-[76px] w-2.5 h-2.5 bg-[#fd4c5c] rounded-full"/>
 
-      <div className="w-full max-w-[1224px] mx-auto flex flex-col lg:flex-row justify-between items-center relative px-3 sm:px-6 pt-0">
+      <div className="w-full max-w-[1124px] mx-auto flex flex-col lg:flex-row justify-between items-center relative px-3 sm:px-6 pt-0">
         {/* Left Side */}
         <div className="flex flex-col items-start w-full lg:w-[480px] max-w-[98vw] lg:max-w-[52vw] mt-2 lg:mt-0">
           <span className="flex items-center gap-2 px-3 py-1 bg-[#e8fff8] border border-[#1bc46a] rounded-full text-xs font-bold text-[#09b95c] mb-6 sm:mb-8 mt-6 sm:mt-[25px] shadow-sm min-h-[30px]">
@@ -26,7 +55,7 @@ export default function HeroSection() {
 
           <h1 className="font-black text-[32px] sm:text-[42px] md:text-[52px] leading-[1.13] text-[#25244c] mb-2 sm:mb-3 tracking-tight drop-shadow-xl" style={{fontFamily:'inherit'}}>
             Store Luggage<br/>
-            <span className="text-[#2a8efc]">Anywhere.</span>
+            <span className="text-blue-600">Anywhere.</span>
           </h1>
 
           <p className="text-[#757493] text-base sm:text-lg mb-6 sm:mb-10">
@@ -34,10 +63,10 @@ export default function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-center mb-9 sm:mb-12 w-full">
-            <button className="bg-[#1536ec] hover:bg-[#0d1dab] transition px-7 py-3 text-base sm:px-8 sm:py-3 rounded-full text-white font-bold shadow-lg shadow-[#bed2ff]/40 w-full sm:w-auto">
+            <a href="/find-storage"><button className="bg-[#1536ec] hover:bg-[#0d1dab] transition px-7 py-3 text-base font-semibold sm:px-8 min-h-[52px] rounded-full text-white shadow-lg shadow-[#bed2ff]/40 w-full sm:w-auto flex items-center justify-center">
               Find Storage Near Me
-            </button>
-            <button className="flex items-center gap-2 px-6 py-3 sm:px-7 sm:py-3 bg-white border border-[#dfeaff] rounded-full text-[#1536ec] font-semibold text-base sm:text-lg shadow-md w-full sm:w-auto justify-center">
+            </button></a>
+            <button className="flex items-center gap-2 px-7 py-3 text-base font-semibold sm:px-8 min-h-[52px] rounded-full bg-white border border-[#dfeaff] text-[#1536ec] shadow-md w-full sm:w-auto justify-center">
               <span className="w-8 h-8 bg-[#edf0fd] flex items-center justify-center rounded-full">
                 <svg width="19" height="19" viewBox="0 0 19 19" fill="none"><circle cx="9.5" cy="9.5" r="9" stroke="#1536ec"/><path d="M8 6l4 3.5L8 13" fill="#1536ec"/></svg>
               </span>
@@ -47,23 +76,27 @@ export default function HeroSection() {
 
           <div className="flex gap-10 sm:gap-16 mb-5 sm:mb-6 mt-2 max-w-[340px] w-full">
             <div className="text-left">
-              <div className="font-extrabold text-xl sm:text-2xl text-[#222248] leading-[1] mb-0">2k+</div>
+              <div className="font-extrabold text-xl sm:text-2xl text-[#222248] leading-[1] mb-0">
+                <Counter to={2000} duration={1100} format={n => n >= 1000 ? `${Math.floor(n/1000)}k+` : `${n}`} />
+              </div>
               <span className="uppercase text-xs text-[#b2b1cb] font-semibold tracking-wide">Units Available</span>
             </div>
             <div className="text-left">
-              <div className="font-extrabold text-xl sm:text-2xl text-[#222248] leading-[1] mb-0">56</div>
+              <div className="font-extrabold text-xl sm:text-2xl text-[#222248] leading-[1] mb-0 relative">
+                <Counter to={56} duration={1100} />
+                <span className="absolute -right-5 top-0 w-6 h-6 border-2 border-dashed border-[#a884ff] rounded-full opacity-60 animate-pulse hidden sm:inline-block" />
+              </div>
               <span className="uppercase text-xs text-[#b2b1cb] font-semibold tracking-wide">Cities Supported</span>
             </div>
           </div>
-          <p className="mt-2 sm:mt-3 text-[#181848] text-base sm:text-[17px] leading-[1.65] max-w-[360px]">
-            <span className="font-semibold text-[#2a8efc]">Trusted by thousands:</span> your bags are safe, insured & ready for pick up—whenever you need them.
-          </p>
         </div>
         {/* Right Side */}
         <div className="relative flex items-center justify-center w-full max-w-full min-h-[280px] h-[340px] sm:w-[520px] sm:h-[530px] mt-8 sm:mt-[54px] lg:mr-[-10px]">
           {/* Main Locker Photo & Masked BG Circle */}
           <div className="absolute z-0 left-[12vw] sm:left-[64px] top-[6vw] sm:top-[18px] w-[72vw] max-w-[372px] h-[72vw] max-h-[372px] rounded-full bg-[#e7f3fa] border-[6px] sm:border-[8px] border-white filter drop-shadow-xl"/>
-          <img src={lockerImg} alt="Luggage Lockers" className="absolute left-[10vw] sm:left-[58px] top-[24vw] sm:top-[32px] w-[72vw] max-w-[372px] h-[72vw] max-h-[372px] object-cover rounded-[30px] sm:rounded-[44px] border-[5px] sm:border-[7px] border-white shadow-xl z-10" />
+          <img src="../../public/li.png" alt="Luggage Lockers" className="absolute left-[10vw] sm:left-[58px] top-[24vw] sm:top-[32px] w-[72vw] max-w-[372px] h-[72vw] max-h-[372px] object-cover rounded-[30px] sm:rounded-[44px] border-[5px] sm:border-[7px] border-white shadow-xl z-10" />
+          
+
           {/* User Booking Card */}
           <div className="absolute left-0 top-[32vw] sm:top-[102px] flex items-center bg-white rounded-full shadow-xl border border-[#eef0f8] px-3 sm:px-4 py-2 w-[70vw] max-w-[224px] h-[48px] sm:h-[61px] z-20">
             <img src={avatarImg} alt="user" className="w-[35px] sm:w-[44px] h-[35px] sm:h-[44px] rounded-full object-cover border border-[#e9ebf3] mr-2" />
@@ -96,7 +129,7 @@ export default function HeroSection() {
             </div>
           </div>
           {/* Stats Card */}
-          <div className="absolute right-0 sm:right-[5px] bottom-0 w-[90vw] max-w-[275px] h-[115px] sm:h-[180px] bg-white rounded-[14px] sm:rounded-[20px] shadow-2xl border border-[#f3f3fa] flex flex-col pt-2 sm:pt-6 pb-3 sm:pb-5 px-3 sm:px-7 z-40">
+          <div className="absolute right-0 sm:right-[5px] bottom-0 w-[90vw] max-w-[275px] h-[100px] sm:h-[210px] bg-white rounded-[14px] sm:rounded-[20px] shadow-2xl border border-[#f3f3fa] flex flex-col pt-2 sm:pt-6 pb-3 sm:pb-5 px-3 sm:px-7 z-40">
             <div className="flex w-full justify-between items-center mb-1 sm:mb-4">
               <div className="text-[#25244c] text-[14px] sm:text-[20px] font-bold">8,359</div>
               <div className="flex items-center gap-0 ml-1">
