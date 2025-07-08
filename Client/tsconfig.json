@@ -4,13 +4,15 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-  //chnages for types in typescript 
   "compilerOptions": {
     "jsx": "react-jsx",
     "skipLibCheck": true,
     "allowJs": true,
     "noEmit": true,
-    "strict": false
+    "strict": false,
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"]
   }
-
 }

@@ -1,5 +1,6 @@
-import React from 'react';
+
 import { Briefcase, Train, Clock, ShieldCheck, /*ShieldDollar, GlobeAlt*/Truck } from 'lucide-react';
+import type { JSX } from 'react/jsx-runtime';
 
 // Define a type that includes the icon as a component
 type Feature = {

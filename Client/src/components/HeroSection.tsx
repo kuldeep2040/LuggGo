@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import '../../public/li.png'
 // Luggage Locker photo for hero;
 // const lockerImg = "https://luggage-storage.nyc/wp-content/uploads/2022/07/shane-LLAz0_wudTo-unsplash-1024x683.jpg";

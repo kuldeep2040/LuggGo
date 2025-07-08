@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 // Using placeholder API for development - replace with actual CDN hosted images in production
 const avatar1 =  'https://images.unsplash.com/photo-1701615004837-40d8573b6652?fm=jpg&q=80&w=120';
