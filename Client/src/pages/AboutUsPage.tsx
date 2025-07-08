@@ -1,4 +1,4 @@
-import React from "react";
+
 import CountUp from "react-countup";
 import { Lightbulb, Eye } from "lucide-react";
 

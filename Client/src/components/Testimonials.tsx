@@ -54,7 +54,7 @@ export default function Testimonials() {
     return () => clearInterval(interval);
   }, [index]);
 
-  const handleTransition = (callback) => {
+  const handleTransition = (callback: () => void) => {
     setIsAnimating(true);
     callback();
     setTimeout(() => setIsAnimating(false), 300);
@@ -77,7 +77,7 @@ export default function Testimonials() {
   ];
   
   // Render stars based on rating
-  const renderStars = (count) => {
+  const renderStars = (count: number) => {
     return Array(5).fill(0).map((_, i) => (
       <svg key={i} className={`w-4 h-4 ${i < count ? 'text-yellow-400' : 'text-gray-300'}`} 
            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
