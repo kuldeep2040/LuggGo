@@ -28,7 +28,7 @@ export default function ContactUsPage() {
     });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
