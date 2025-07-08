@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ContactUsPage() {
   // Form state management
@@ -285,7 +285,7 @@ export default function ContactUsPage() {
       </div>
 
       {/* CSS for animations */}
-      <style jsx>{`
+      <style >{`
         .fade-in {
           opacity: 0;
           transform: translateY(20px);
