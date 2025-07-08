@@ -6,8 +6,11 @@
   ],
   //chnages for types in typescript 
   "compilerOptions": {
-    "strict": false,
-    "noImplicitAny": false
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noEmit": true,
+    "strict": false
   }
 
 }
