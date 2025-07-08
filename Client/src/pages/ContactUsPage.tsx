@@ -28,7 +28,7 @@ export default function ContactUsPage() {
     });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -214,7 +214,7 @@ export default function ContactUsPage() {
                   <textarea 
                     id="message"
                     name="message" 
-                    rows="5" 
+                    rows={5} 
                     value={formData.message} 
                     onChange={handleChange}
                     placeholder="Tell us how we can help you..." 
