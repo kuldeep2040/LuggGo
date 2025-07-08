@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
  
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer"; // Your footer component
-import Home from "./pages/home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import FindStoragePage from "./pages/FindStoragePage";
@@ -12,6 +11,7 @@ import HeroSection from "./components/HeroSection";
 import AvailableStorageUnits from "./pages/AvailableStorageUnits";
 import LuggageStorageDetail from "./pages/LuggageStorageDetails";
 import ContactUs from "./pages/ContactUsPage";
+import Home from "./pages/Home";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
