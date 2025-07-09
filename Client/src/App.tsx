@@ -12,6 +12,7 @@ import AvailableStorageUnits from "./pages/AvailableStorageUnits";
 import LuggageStorageDetail from "./pages/LuggageStorageDetails";
 import ContactUs from "./pages/ContactUsPage";
 import Home from "./pages/Home";
+import LoginSignup from "./pages/LoginSignup";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -22,6 +23,7 @@ const TicketSalesPage: React.FC = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginSignup />} />
             <Route path="/hero" element={<HeroSection />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element=  {<TermsOfService />} />

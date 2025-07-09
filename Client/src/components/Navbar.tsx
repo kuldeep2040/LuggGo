@@ -33,7 +33,7 @@ const Navbar: FC = () => {
         <a href="/contact-us">Support</a>
       </nav>
       <div className="space-x-4">
-        <button className="text-sm">Log In</button>
+        <a href="/login"><button className="text-sm" >Log In</button></a>
         <button className="bg-blue-600 text-white px-4 py-2 rounded text-sm">Sign Up</button>
       </div>
     </header>

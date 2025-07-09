@@ -113,7 +113,6 @@ export default function ContactUsPage() {
               </a>
             </div>
             
-            {/* Office */}
             <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 fade-in">
               <div className="w-12 h-12 bg-[#edf0fd] rounded-2xl flex items-center justify-center mb-4">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1536ec" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
