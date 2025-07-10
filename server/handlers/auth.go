@@ -112,7 +112,7 @@ func Login(c *fiber.Ctx) error {
 	req, _ := http.NewRequest("POST", os.Getenv("SUPABASE_URL")+"/auth/v1/token?grant_type=password", bytes.NewBuffer(loginJSON))
 	req.Header.Set("apikey", os.Getenv("SUPABASE_ANON_KEY"))
 	req.Header.Set("Content-Type", "application/json")
-
+	
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
