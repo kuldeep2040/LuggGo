@@ -6,6 +6,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
+	"github.com/kuldeep2040/LuggGo/handlers"
 )
 
 func main() {
@@ -20,7 +21,8 @@ func main() {
 		return c.SendString("🚀 LuggGo API is live")
 	})
 
-	app.Post("/register", )
+	app.Post("/register", handlers.Register)
+	app.Post("/login", handlers.Login)
 
 	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }
