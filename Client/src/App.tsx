@@ -13,6 +13,7 @@ import LuggageStorageDetail from "./pages/LuggageStorageDetails";
 import ContactUs from "./pages/ContactUsPage";
 import Home from "./pages/Home";
 import LoginSignup from "./pages/LoginSignup";
+import ProfilePage from "./pages/ProfilePage";
 const TicketSalesPage: React.FC = () => {
   return (
     <Router>
@@ -32,6 +33,7 @@ const TicketSalesPage: React.FC = () => {
             <Route path="/units" element={<AvailableStorageUnits />} />
             <Route path="/book" element={<LuggageStorageDetail />} />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/profile" element={<ProfilePage />} /> {/* Fallback route */}
 
  
  
