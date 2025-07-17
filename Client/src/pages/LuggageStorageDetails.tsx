@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {  
   MapPin, 
   Clock, 
@@ -21,8 +21,8 @@ interface StorageUnit {
   name: string;
   rating: number;
   reviewCount: number;
-  hourlyRate: number;
-  dailyRate: number;
+  price_per_hour_per_bag: number;
+  price_per_day_per_bag: number;
   address: string;
   landmark: string;
   distance: { minutes: number; kilometers: number };
@@ -45,14 +45,13 @@ const LuggageStorageDetail: React.FC = () => {
   const [activeDateInput, setActiveDateInput] = useState<'dropoff' | 'pickup' | null>(null);
   const [activeTab, setActiveTab] = useState<'info' | 'reviews' | 'faq'>('info');
   
+  
   // Mock data for the selected storage unit
   const storageUnit: StorageUnit = {
     id: "morgan-hotel-1",
     name: "Hotel Morgan",
     rating: 4.8,
     reviewCount: 127,
-    hourlyRate: 13,
-    dailyRate: 104,
     address: "Railway Station 2nd Exit, Jaipur",
     landmark: "Jaipur Railway Station",
     distance: { minutes: 14, kilometers: 1.2 },
@@ -116,7 +115,6 @@ const LuggageStorageDetail: React.FC = () => {
       const pickupHour = parseInt(pickupTime.split(':')[0]);
       return Math.max(1, pickupHour - dropoffHour);
     }
-    // For simplicity, returning 24 hours if dates are different
     return 24;
   };
 
@@ -151,6 +149,19 @@ const LuggageStorageDetail: React.FC = () => {
     return `${date} ${time}`;
   };
 
+  const [storagePoint, setStoragePoint] = useState<StorageUnit | null>(null);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/storagepoints")
+      .then((res) => res.json())
+      .then((data) => {
+        setStoragePoint(data[0]); // Use the first item for now
+      })
+      .catch((err) => console.error("Error fetching data:", err));
+  }, []);
+
+  if (!storagePoint) return <div className="p-4">Loading...</div>;
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Navigation bar
@@ -167,7 +178,7 @@ const LuggageStorageDetail: React.FC = () => {
       {/* Hero section */}
       <div className="relative bg-gradient-to-b from-blue-500 to-blue-400 text-white">
         <div className="max-w-7xl mx-auto p-8">
-          <h1 className="text-4xl font-bold mb-2">{storageUnit.name}</h1>
+          <h1 className="text-4xl font-bold mb-2">{storagePoint.name}</h1>
           
           <div className="flex items-center mb-4">
             <div className="flex items-center bg-yellow-400 text-gray-900 px-3 py-1 rounded-full">
@@ -179,7 +190,7 @@ const LuggageStorageDetail: React.FC = () => {
             
             <div className="mx-3 bg-blue-500 px-3 py-1 rounded-full flex items-center">
               <MapPin size={14} className="mr-1" />
-              <span>Near {storageUnit.landmark}</span>
+              <span>Near {storagePoint.landmark}</span>
             </div>
             
             <div className="bg-green-500 px-3 py-1 rounded-full flex items-center">
@@ -190,7 +201,7 @@ const LuggageStorageDetail: React.FC = () => {
           
           <div className="flex items-center text-lg">
             <Clock size={20} className="mr-2" />
-            <span>{storageUnit.openingHours}</span>
+            <span>{storagePoint.openingHours}</span>
           </div>
         </div>
         
@@ -257,7 +268,7 @@ const LuggageStorageDetail: React.FC = () => {
                       <div className="flex items-start mb-3">
                         <MapPin className="text-blue-600 mt-1 flex-shrink-0" size={20} />
                         <div className="ml-3">
-                          <p className="text-gray-800 font-medium">{storageUnit.address}</p>
+                          <p className="text-gray-800 font-medium">{storagePoint.address}</p>
                           <p className="text-gray-500 text-sm mt-1">Full address will be shared after booking</p>
                         </div>
                       </div>
@@ -284,7 +295,7 @@ const LuggageStorageDetail: React.FC = () => {
                   {/* About */}
                   <div className="mb-8">
                     <h2 className="text-2xl font-bold text-gray-900 mb-4">About this location</h2>
-                    <p className="text-gray-700 mb-6 leading-relaxed">{storageUnit.description}</p>
+                    <p className="text-gray-700 mb-6 leading-relaxed">{storagePoint.description}</p>
                     
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">Amenities</h3>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
@@ -367,10 +378,10 @@ const LuggageStorageDetail: React.FC = () => {
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-4 text-white">
                   <h2 className="text-xl font-bold">Book Your Storage</h2>
                   <div className="flex items-center mt-2">
-                    <span className="text-3xl font-bold">₹{storageUnit.hourlyRate}</span>
+                    <span className="text-3xl font-bold">₹{storagePoint.price_per_hour_per_bag}</span>
                     <span className="ml-1">/hour</span>
                     <span className="mx-2 text-white text-opacity-70">|</span>
-                    <span className="text-lg">₹{storageUnit.dailyRate}/day</span>
+                    <span className="text-lg">₹{storagePoint.price_per_day_per_bag}/day</span>
                   </div>
                 </div>
                 

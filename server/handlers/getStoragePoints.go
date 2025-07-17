@@ -10,7 +10,11 @@ import (
 
 func GetStoragePoints(c *fiber.Ctx) error {
 	supabaseUrl := os.Getenv("SUPABASE_URL")
-	supabaseKey := os.Getenv("SUPABASE_KEY")
+	supabaseKey := os.Getenv("SUPABASE_ANON_KEY")
+
+	println("🔍 SUPABASE_URL:", supabaseUrl)
+	println("🔍 SUPABASE_KEY:", supabaseKey)
+
 
 	// Initialize Supabase client
 	supabase, err := supabase_go.NewClient(supabaseUrl, supabaseKey, nil)
